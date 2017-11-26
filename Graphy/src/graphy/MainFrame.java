@@ -109,12 +109,12 @@ public class MainFrame extends JFrame{
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 
         new Trignometric();
-//        dispose();          
+        dispose();          
     }                                     
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 
-        new Exponent()
+        new Exponential();
         dispose();          
     }                                        
 
