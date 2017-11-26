@@ -27,7 +27,7 @@ public class MainFrame extends JFrame{
         getContentPane().setLayout(null);
 
         jLabel1.setIcon(new javax.swing.ImageIcon("/home/apurvnit/Projects/ITE2005Project/Graphy/src/graphy/3.png")); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("");
 
         jPanel1.setBackground(new java.awt.Color(95, 107, 99));
 
@@ -108,13 +108,15 @@ public class MainFrame extends JFrame{
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 
-        new Trigonometric().setVisible(true);
-        dispose();          }                                     
+        new Trignometric();
+//        dispose();          
+    }                                     
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 
-        new Exponent().setVisible(true);
-        dispose();          }                                        
+        new Exponent()
+        dispose();          
+    }                                        
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         

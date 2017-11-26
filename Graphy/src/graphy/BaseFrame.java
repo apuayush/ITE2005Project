@@ -20,7 +20,7 @@ class BaseFrame extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
 
-        setLayout(null);
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());  
 
         jPanel1.setBackground(new java.awt.Color(97, 212, 195));
 
