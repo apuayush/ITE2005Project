@@ -1,16 +1,17 @@
-
 package graphy;
-
-public class BaseFrame extends javax.swing.JPanel {
+import java.awt.*;
+import javax.swing.*;
+class BaseFrame extends javax.swing.JFrame {
 
     public BaseFrame() {
+        super();
         initComponents();
-    }
-
-
-//    @SuppressWarnings("checked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+        this.setVisible(true);
+        
+    }                         
     private void initComponents() {
+        setMaximumSize(new java.awt.Dimension(1220, 780));
+        setMinimumSize(new java.awt.Dimension(1220, 780));
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -19,7 +20,7 @@ public class BaseFrame extends javax.swing.JPanel {
         jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(97, 212, 195));
 
@@ -77,19 +78,23 @@ public class BaseFrame extends javax.swing.JPanel {
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 750));
-    }// </editor-fold>//GEN-END:initComponents
+    }
+    public void switchToMainFrame(){
+        MainFrame mf = new MainFrame();
+    }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {  
+        switchToMainFrame();
+    }
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
+
 }
