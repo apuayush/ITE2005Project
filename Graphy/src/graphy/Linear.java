@@ -1,14 +1,13 @@
+
 package graphy;
 
 import javax.swing.*;
 import java.awt.*;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.geom.Line2D;
 
-public class Exponential extends JFrame{
-    
+public class Linear extends JFrame {
     private JButton jButton1;
     private JButton jButton2;
     private JButton jButton3;
@@ -21,9 +20,9 @@ public class Exponential extends JFrame{
     private JTextField jTextField1;
                             
     
-    int x;
+    int index=0;
     
-    Exponential(){
+    Linear(){
         super();
         init();
         this.setVisible(true);
@@ -71,15 +70,15 @@ public class Exponential extends JFrame{
 
         jTextArea1.setBackground(new Color(79, 126, 91));
         jTextArea1.setColumns(20);
-        jTextArea1.setFont(new Font("Times New Roman", 1, 24)); 
+        jTextArea1.setFont(new Font("Times New Roman", 1, 24));
         jTextArea1.setRows(5);
-        jTextArea1.setText("Graph of the form \n\t\n\ty = X^n");
+        jTextArea1.setText("Graph of the form \n\t\n\ty = ax+by+c");
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(949, 101, 426, -1));
 
         jLabel1.setFont(new Font("Ubuntu Light", 1, 18)); 
-        jLabel1.setText("Enter value of n");
+        jLabel1.setText("Enter equation");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(949, 337, 150, 39));
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1136, 337, 184, 39));
        
@@ -121,26 +120,48 @@ public class Exponential extends JFrame{
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 780, 130, -1));
 
         pack();
-    }                       
-
-    private void jButton1ActionPerformed(ActionEvent evt) {  
+     }
+     
+     private void jButton1ActionPerformed(ActionEvent evt) {  
         
        Graphics2D gfx=(Graphics2D)jPanel1.getGraphics();
 
         
         Color col=Color.white;
+        
         gfx.setColor(col);
-        double n=Double.parseDouble(jTextField1.getText());
-
-        x=x+1;
+        
         gfx.fillRect(249,0,2,500);
         gfx.fillRect(0,249,500,2);
+ 
+        String eqn = jTextField1.getText();
+        double a,b,c;
+        int L1, L2;
+        
+        try{
+            a = Double.parseDouble(eqn.substring(0,eqn.indexOf("x")));
+        }
+        catch(Exception e){
+            a = 1.0;
+        }
+        eqn = eqn.substring(eqn.indexOf("x")+2);
+        
+        try{
+            b = Double.parseDouble(eqn.substring(0,eqn.indexOf("y")));
+        }
+        catch(Exception e){
+            b = 1.0;
+        }
+        
+        try{
+            c = Double.parseDouble(eqn.substring(eqn.indexOf("y")+1));
+        }
+        catch(Exception e){
+            c = 1.0;
+        }
+        index++;
 
-        double a=250;
-        double b=250;
-        double i=250;
-
-        switch (x)
+        switch (index)
         { 
             case 1: 
                 col=Color.cyan;
@@ -166,34 +187,33 @@ public class Exponential extends JFrame{
             default: col=Color.white; 
         }
         
+        gfx.setColor(Color.WHITE);
+
+        gfx.fillRect(249,0,2,500);
+        gfx.fillRect(0,249,500,2);  
+        
         gfx.setColor(col);
+        double i=-20*c/a,j = -20*c/b,k = Math.sqrt((i*i+j*j));
+        double x = 250 + (-20)*c/a;
+        double y = 250 - (-20)*c/b;
+        double x1=x+200*(i/k);
+        double y1=250+200*(j/k);
+        gfx.draw(new Line2D.Double(250,y,x,250));
+        gfx.draw(new Line2D.Double(x1,y1,x,250));
+        double x2=250-200*(i/k);
+        double y2=y-200*(j/k);
+         gfx.draw(new Line2D.Double(x2,y2,250,y));
+        
+     }    
+ 
 
-        while(i<500)
-        {
-            i=i+0.001;
-            double y=250-(50*n*Math.pow(((i/50)-5),n));
-            gfx.draw(new Line2D.Double(a,b,i,y));
-            a=i;
-            b=y;    
-        }
+        
+        
         
 
-        a=250;
-        b=250;
-        i=250;
-        
-
-        while(i>0)
-        {   
-            i=i-0.001;
-            double y=250-(50*n*Math.pow(((i/50)-5),n));
-            gfx.draw(new Line2D.Double(a,b,i,y));
-            a=i;
-            b=y;    
-        }    
-    }
-                                          
-    private void jButton2ActionPerformed(ActionEvent evt) {                                         
+ 
+     
+     private void jButton2ActionPerformed(ActionEvent evt) {                                         
         
         dispose();
         new MainFrame();
@@ -204,7 +224,5 @@ public class Exponential extends JFrame{
         gfx.fillRect(0,0,720,751);
         Color col=Color.black;
         gfx.setColor(col);
-    }                                                              
-                                       
+    }                      
 }
-   
